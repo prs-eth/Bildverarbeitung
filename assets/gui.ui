@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1030</width>
+    <height>583</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1030</width>
+    <height>583</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1030</width>
+    <height>583</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Bildverarbeitung</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="raw_img">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>25</y>
+      <width>500</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="edit_img">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>25</y>
+      <width>500</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>500</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Raw Image</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>0</y>
+      <width>500</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Edited Image</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1030</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionRestore"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <widget class="QMenu" name="menuMorphology">
+     <property name="title">
+      <string>Morphology</string>
+     </property>
+     <addaction name="actionSegmentation"/>
+     <addaction name="actionClosehole"/>
+     <addaction name="actionCount"/>
+    </widget>
+    <addaction name="menuMorphology"/>
+    <addaction name="actionText_recog"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionCanny">
+   <property name="text">
+    <string>Canny</string>
+   </property>
+  </action>
+  <action name="actionRGB_HSI">
+   <property name="text">
+    <string>RGB-&gt;HSI</string>
+   </property>
+  </action>
+  <action name="actionRGB_L_a_b">
+   <property name="text">
+    <string>RGB-&gt;L*a*b*</string>
+   </property>
+  </action>
+  <action name="actionRestore">
+   <property name="text">
+    <string>Restore</string>
+   </property>
+  </action>
+  <action name="actionSegmentation">
+   <property name="text">
+    <string>Segment</string>
+   </property>
+  </action>
+  <action name="actionClosehole">
+   <property name="text">
+    <string>Close hole</string>
+   </property>
+  </action>
+  <action name="actionCount">
+   <property name="text">
+    <string>Count</string>
+   </property>
+  </action>
+  <action name="actionText_recog">
+   <property name="text">
+    <string>Text_recog</string>
+   </property>
+  </action>
+  <action name="actionFourier_transform">
+   <property name="text">
+    <string>Fourier transform</string>
+   </property>
+  </action>
+  <action name="actionSpace">
+   <property name="text">
+    <string>Space</string>
+   </property>
+  </action>
+  <action name="actionFrequency">
+   <property name="text">
+    <string>Frequency</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
