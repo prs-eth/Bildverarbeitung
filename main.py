@@ -6,7 +6,7 @@ from libs.gui import Ui_MainWindow
 import numpy as np
 
 from libs.utils import convert_cv2img_to_QPixmap
-from libs.morphology import segment_util, close_hole_util, count_coins_util, text_recog_util
+from libs.morphology import segment_util, close_hole_util, instance_segmentation_util, text_recog_util
 
 
 LABEL_WIDTH = 500
@@ -26,12 +26,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.actionRestore.triggered.connect(self.restore_img)
         self.actionSegmentation.triggered.connect(self.segment_coin)
         self.actionClosehole.triggered.connect(self.close_hole)
-        self.actionCount.triggered.connect(self.count_coins)
+        self.actionInstanceSeg.triggered.connect(self.instance_segmentation)
         self.actionText_recog.triggered.connect(self.text_recog)
-
+        
     
     def print_edited_img(self,img):
-        pixmap = convert_cv2img_to_QPixmap(img[:,:,None].astype(np.uint8))
+        # if img is a RGB img
+        if len(img.shape)==3:
+            pixmap = convert_cv2img_to_QPixmap(img[:,:,:].astype(np.uint8))
+        # if img is a binary img
+        else:
+            pixmap = convert_cv2img_to_QPixmap(img[:,:,None].astype(np.uint8))
         pixmap = pixmap.scaled(LABEL_WIDTH, LABEL_HEIGHT, QtCore.Qt.KeepAspectRatio)
         self.edit_img.setPixmap(pixmap)
 
@@ -60,7 +65,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     # --------------------------------- Q 2.1.1 -------------------------------------
     def segment_coin(self):
         """
-        Load the coin.png --> segment and save it, and show it in the right figure
+        Load the coins.jpg --> segment and save it, and show it in the right figure
         """
         img = cv2.imread(self.img_path)
         coin_img_seg = segment_util(img) * 255
@@ -70,6 +75,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     # --------------------------------- Q 2.1.2 -------------------------------------
     def close_hole(self):
+        """
+        Load the coins_seg.png --> close the holes inside coins and save it, and show it in the right figure
+        """
         img = cv2.imread(self.img_path)[:, :, 0] / 255.
         img_close = close_hole_util(img) * 255
         cv2.imwrite('results/coins_close.png', img_close)
@@ -77,13 +85,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
     # --------------------------------- Q 2.1.3 -------------------------------------
-    def count_coins(self):
-        img = cv2.imread(self.img_path)[:, :, 0] / 255.
-        img_disconnected, n_comp = count_coins_util(img)
-        img_disconnected = img_disconnected * 255
-        cv2.imwrite('results/coins_disconnected.png', img_disconnected)
-        print('Number of counted components: ' + str(n_comp))
-        self.print_edited_img(img_disconnected)
+    def instance_segmentation(self):
+        """
+        Load the coins_close.png --> instance segmentation and save it, and show it in the right figure
+        """
+        img = cv2.imread(self.img_path)[:, :, 0]
+        img_instances = instance_segmentation_util(img) * 255
+        cv2.imwrite('results/coins_instances.png', img_instances)
+        self.print_edited_img(img_instances)
 
     # --------------------------------- Q 2.2 ---------------------------------------
     def text_recog(self):
@@ -92,7 +101,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         text_recog_results = text_recog_util(text, letter_not) * 255
         cv2.imwrite('results/text_recog_results.png', text_recog_results)
         self.print_edited_img(text_recog_results)
-
 
 
 if __name__=='__main__':

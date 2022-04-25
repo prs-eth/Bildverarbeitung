@@ -94,7 +94,7 @@
      <x>0</x>
      <y>0</y>
      <width>1030</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -114,7 +114,7 @@
      </property>
      <addaction name="actionSegmentation"/>
      <addaction name="actionClosehole"/>
-     <addaction name="actionCount"/>
+     <addaction name="actionInstanceSeg"/>
     </widget>
     <addaction name="menuMorphology"/>
     <addaction name="actionText_recog"/>
@@ -163,9 +163,9 @@
     <string>Close hole</string>
    </property>
   </action>
-  <action name="actionCount">
+  <action name="actionInstanceSeg">
    <property name="text">
-    <string>Count</string>
+    <string>Instance segmentation</string>
    </property>
   </action>
   <action name="actionText_recog">
@@ -186,6 +186,11 @@
   <action name="actionFrequency">
    <property name="text">
     <string>Frequency</string>
+   </property>
+  </action>
+  <action name="actionThreshold">
+   <property name="text">
+    <string>Threshold</string>
    </property>
   </action>
  </widget>

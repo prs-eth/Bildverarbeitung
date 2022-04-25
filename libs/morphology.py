@@ -1,20 +1,22 @@
 import numpy as np
-from cv2 import imread, imwrite, dilate, erode
-from cv2 import cvtColor, COLOR_BGR2HLS
+from cv2 import imread,imwrite, dilate, erode
+from cv2 import cvtColor, COLOR_BGR2HLS, calcHist
+import cv2 as cv
+import random
 from matplotlib import pyplot as plt
-from skimage.measure import label       # pip install scikit-image
+from skimage.measure import label
+
 
 
 # --------------------------------- Zusatzaufgabe ---------------------------------------
 def segment_util(img):
     """
-    Given an input image, output the semantic segmentation result
+    Given an input image, output the segmentation result
     Input:  
         img:        n x m x 3, values are within [0,255]
     Output:
         img_seg:    n x m
     """
-
     ## TODO
     img_seg = ...
 
@@ -33,22 +35,18 @@ def close_hole_util(img):
 
     return closed_img
 
-
-def count_coins_util(img):
+def instance_segmentation_util(img):
     """
-    Given the closed segmentation image, count how many coins
-    Input:
-        img:          n x m
+    Given the closed segmentation image, output the instance segmentation result
+    Input:  
+        img:        n x m, values are within [0,255]
     Output:
-        labelde_img:  n x m
-        n_components: integer
-
+        instance_seg_img:    n x m x 3, different coin instances have different colors
     """
     ## TODO
-    labeled_img = ...
-    n_components = ...
-    return labeled_img, n_components
+    instance_seg_img = ...
 
+    return instance_seg_img
 
 def text_recog_util(text, letter_not):
     """
