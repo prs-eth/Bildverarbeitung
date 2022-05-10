@@ -28,6 +28,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.actionClosehole.triggered.connect(self.close_hole)
         self.actionInstanceSeg.triggered.connect(self.instance_segmentation)
         self.actionText_recog.triggered.connect(self.text_recog)
+
+        os.mkdir('results')
         
     
     def print_edited_img(self,img):
