@@ -38,7 +38,13 @@ def close_hole_util(img):
         closed_img: n x m
     """
     ## TODO
-    closed_img = ...
+    kernel = np.ones((2, 2), np.uint8)
+    iterations = 5
+
+    img_dilated = dilate(img, kernel, iterations=iterations)
+    img_normal = erode(img_dilated, kernel, iterations=iterations)
+
+    closed_img = img_normal
 
     return closed_img
 
