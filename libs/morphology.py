@@ -1,5 +1,5 @@
 import numpy as np
-from cv2 import imread,imwrite, dilate, erode
+from cv2 import IMWRITE_PNG_STRATEGY, imread,imwrite, dilate, erode
 from cv2 import cvtColor, COLOR_BGR2HLS, calcHist
 import cv2 as cv
 import random
@@ -18,7 +18,14 @@ def segment_util(img):
         img_seg:    n x m
     """
     ## TODO
-    img_seg = ...
+    img_rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+    img_hsv = cv.cvtColor(img_rgb, cv.COLOR_RGB2HSV)
+
+    mask = cv.bitwise_not(cv.inRange(img_hsv, (0, 0, 0), (255, 25, 255)))
+
+    white = np.ones((img.shape[0], img.shape[1]), np.uint8)
+
+    img_seg = cv.bitwise_and(white, white, mask=mask)
 
     return img_seg
 
