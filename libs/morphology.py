@@ -1,3 +1,4 @@
+from csv import Dialect
 from ipykernel import kernel_protocol_version
 import numpy as np
 from cv2 import IMWRITE_PNG_STRATEGY, imread,imwrite, dilate, erode
@@ -96,6 +97,12 @@ def text_recog_util(text, letter_not):
     from scipy.ndimage import binary_erosion as erode
     from scipy.ndimage import binary_dilation as dilate
     ## TODO
-    text_er_dil = ...
+    _, text_binary = cv.threshold(text, 0.5, 1, cv.THRESH_BINARY_INV)
+    _, letter_binary = cv.threshold(letter_not, 0.5, 1, cv.THRESH_BINARY)
+
+    img_eroded = erode(text_binary, letter_binary)
+    img_dilated = dilate(img_eroded, letter_binary)
+
+    text_er_dil = img_dilated
 
     return text_er_dil
