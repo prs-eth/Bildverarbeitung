@@ -1,12 +1,12 @@
 # Bildverarbeitung
 
-This repository follows Bildverarbeitung FS2022 for Geomatik bachelor students at ETH Zurich. Lectures and recordings can be found in [Moodle](https://moodle-app2.let.ethz.ch/course/view.php?id=17253&lang=en). 
+This repository follows Bildverarbeitung FS2023 for Geomatik bachelor students at ETH Zurich. Lectures and recordings can be found in [Moodle](https://moodle-app2.let.ethz.ch/course/view.php?id=19268). 
 
 ## Contact
 If you have any questions, please let us know:
-- Nadine Rueegg {nadine.rueegg@geod.baug.ethz.ch}
-- Shengyu Huang {shengyu.huang@geod.baug.ethz.ch}
 - Binbin Xiang {binbin.xiang@geod.baug.ethz.ch}
+- Shengyu Huang {shengyu.huang@geod.baug.ethz.ch}
+- Rodrigo Caye Daudt {rodrigo.cayedaudt@geod.baug.ethz.ch}
 
 ## Dependencies
 This code has been test on 
@@ -14,7 +14,7 @@ This code has been test on
 
 As the first step, please git clone this repository to your local machine by running:
 ```
-git clone https://github.com/prs-eth/Bildverarbeitung-FS2022.git
+git clone https://github.com/prs-eth/Bildverarbeitung.git
 ``` 
 
 Then, please run the following commands to create virtual environment and install dependencies: 
