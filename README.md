@@ -40,24 +40,29 @@ and you will see sth like:
 <img src="assets/main.png" alt="gui" width="700"/>
 
 ### Known issues
-If you run into errors like 
-```
-QObject::moveToThread: Current thread (0x2ab1aa0) is not the object's thread (0x312d4d0).
-Cannot move to target thread (0x2ab1aa0)
+- If you run into errors like 
+    ```
+    QObject::moveToThread: Current thread (0x2ab1aa0) is not the object's thread (0x312d4d0).
+    Cannot move to target thread (0x2ab1aa0)
 
-qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "/scratch2/shengyu/predator/lib/python3.8/site-packages/cv2/qt/plugins" even though it was found.
-This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+    qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "/scratch2/shengyu/predator/lib/python3.8/site-packages/cv2/qt/plugins" even though it was found.
+    This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
 
-Available platform plugins are: xcb, eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, wayland-egl, wayland, wayland-xcomposite-egl, wayland-xcomposite-glx, webgl.
+    Available platform plugins are: xcb, eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, wayland-egl, wayland, wayland-xcomposite-egl, wayland-xcomposite-glx, webgl.
 
-Aborted
-```
+    Aborted
+    ```
 
-Please uninstall ```opencv_python``` and instead ```opencv_python_headless``` instead:
-```
-pip uninstall opencv_python
-pip install opencv_python_headless
-```
+    Please uninstall ```opencv_python``` and instead ```opencv_python_headless``` instead:
+    ```
+    pip uninstall opencv_python
+    pip install opencv_python_headless
+    ```
+- If you have problems with installing libs. on MacOS system, please first check if you can successfully install ```scipy```, if not, you might have to install ```gcc``` first by running:
+    ```
+    brew install gcc
+    ```
+
 
 ## Instructions
 This GUI is built on QT, to make any modifications, please first open qt designer/creator:
