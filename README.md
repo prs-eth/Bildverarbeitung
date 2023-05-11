@@ -63,6 +63,11 @@ and you will see sth like:
     brew install gcc
     ```
 
+- If you are a Mac user and have problems with install PyQt5 via ```pip install```, please consider using ```conda install``` instead, you can still use ```pip install``` under an anaconda environment by first running:
+```
+conda install pip
+```
+
 
 ## Instructions
 This GUI is built on QT, to make any modifications, please first open qt designer/creator:
