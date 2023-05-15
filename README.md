@@ -56,7 +56,12 @@ and you will see sth like:
     Please uninstall ```opencv_python``` and instead ```opencv_python_headless``` instead:
     ```
     pip uninstall opencv_python
-    pip install opencv_python_headless
+    pip install opencv-python-headless
+    ```
+    If this also doesn't work for you, please try:
+    ```
+    pip uninstall opencv_python
+    pip install opencv-contrib-python
     ```
 - If you have problems with installing libs. on MacOS system, please first check if you can successfully install ```scipy```, if not, you might have to install ```gcc``` first by running:
     ```
